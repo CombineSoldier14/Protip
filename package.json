@@ -1,0 +1,16 @@
+{
+  "name": "protip",
+  "version": "1.2.0",
+  "description": "A Discord bot designed for giving helpful advice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eddie Devine",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.1"
+  }
+}
