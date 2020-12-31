@@ -30,3 +30,7 @@ discord.js ^12.5.1
 fs 0.0.1-security
 
 node-fetch ^2.6.1
+
+**APIs Used**
+
+[Adviceslip](https://api.adviceslip.com/advice)
