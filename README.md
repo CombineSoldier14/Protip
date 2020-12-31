@@ -21,15 +21,15 @@ A Discord bot designed to give helpful advice.
 
 **Contributors:**
 
-<p>Eddie Devine @OCTO</p>
+<p>Eddie Devine Trig7 @OCTO</p>
 
 **Libraries Used**
 
-discord.js ^12.5.1
+[discord.js ^12.5.1](https://www.npmjs.com/package/discord.js)
 
-fs 0.0.1-security
+[fs 0.0.1-security](https://www.npmjs.com/package/fs)
 
-node-fetch ^2.6.1
+[node-fetch ^2.6.1](https://www.npmjs.com/package/node-fetch)
 
 **APIs Used**
 
