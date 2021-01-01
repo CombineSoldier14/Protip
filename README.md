@@ -6,7 +6,7 @@ A Discord bot designed to give helpful advice.
 **Discord Server:** [Server Invite](https://discord.gg/r67hzUNszw)\
 **Top.gg (Not Approved Yet):** [top.gg](https://top.gg/bot/792875120116891709)
 
-**Permissions Required**
+**Permissions Required**\
 ``Read Messages`` ``Send Messages``\
 ``Embed Links`` ``Attach Files``\
 ``Read Message History``\
