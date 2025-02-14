@@ -4,12 +4,12 @@ const client = new Client();
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-var config;
-var settings;
+let config;
+let settings;
 
-var version;
-var token;
-var uptime = 0;
+let version;
+let token;
+let uptime = 0;
 
 function save(){
     fs.writeFile('settings.json', JSON.stringify(settings), function(err){
@@ -18,7 +18,7 @@ function save(){
     });
 }
 
-var uptimeINT = setInterval(function(){
+let uptimeINT = setInterval(function(){
     uptime++;
 }, 60000)
 
@@ -49,7 +49,7 @@ client.on("guildCreate", (guild) => {
         
         settings = JSON.parse(data);
 
-        var obj = {};
+        let obj = {};
         obj["prefix"] = ".";
         obj["name"] = guild.name;
         obj["ownerID"] = guild.ownerID;
@@ -64,7 +64,7 @@ client.on("guildCreate", (guild) => {
 });
 
 client.on('message', message => {
-    if(message.author.bot == false && message.channel.type != "dm"){//checking for channel type and bots
+    if(!message.author.bot && message.channel.type != "dm"){//checking for channel type and bots
         var server = message.guild.id.toString();
 
         if(settings[server]['role'] == 'everyone'){
@@ -106,16 +106,16 @@ client.on('message', message => {
                 message.channel.send('If you have any suggestions for future updates please fill out this form:\nhttps://protip.now.sh/contact');
             }
             else if(message.content.startsWith(settings[server]['prefix']+'uptime')){//uptime
-                var calcUptime = Math.floor(uptime/60).toString();
+                let calcUptime = Math.floor(uptime/60).toString();
                 message.channel.send(`Protip has been online for ${calcUptime} hours.`);
             }
             else if(message.content == settings[server]['prefix']+'tip'){//tip
                 fetch('https://api.adviceslip.com/advice')
                     .then(resp => {
-                        var factBuffer = resp.body._outBuffer;
-                        var fact = factBuffer.toString('utf-8');
-                        var index1 = fact.indexOf('advice');
-                        var index2 = fact.indexOf('}}');
+                        let factBuffer = resp.body._outBuffer;
+                        let fact = factBuffer.toString('utf-8');
+                        let index1 = fact.indexOf('advice');
+                        let index2 = fact.indexOf('}}');
                         fact = fact.slice(index1, index2);
                         fact = fact.replace('"', "");
                         index1 = fact.indexOf(':');
@@ -134,7 +134,7 @@ client.on('message', message => {
                 })
             }
             else if(message.content.startsWith(settings[server]['prefix']+'set prefix ') && message.member.hasPermission(['ADMINISTRATOR'])){//set prefix
-                var newPrefix = message.content.substring(12, message.content.length);
+                let newPrefix = message.content.substring(12, message.content.length);
                 if(newPrefix == settings[server]['prefix']){
                     message.channel.send('Prefix is already set to: ' + settings[server]['prefix']);
                 }
@@ -151,7 +151,7 @@ client.on('message', message => {
                 message.channel.send('https://protip.now.sh/');
             }
             else if(message.content.startsWith(settings[server]['prefix'])){//no command recognized
-                message.channel.send('Sorry I didn\'t recognize that command.\nUse ``' + settings[server]['prefix'] + 'help`` to see a list of commands.');
+                message.channel.send('Sorry, I didn\'t recognize that command.\nUse ``' + settings[server]['prefix'] + 'help`` to see a list of commands.');
             }
 
         }
